@@ -54,12 +54,12 @@ def extract_file(archive_path: Path, dest_path: Path):
 
 def create_module_prop(path: Path, project_tag: str):
     module_prop = f"""id=magisk-frida
-name=MagiskFrida
+name=MagiskFlorida
 version={project_tag}
 versionCode={project_tag.replace(".", "").replace("-", "")}
-author=ViRb3
-description=Run frida-server on boot
-updateJson=https://github.com/ViRb3/magisk-frida/releases/latest/download/updater.json"""
+author=MoonBirdLin
+description=Run florida-server on boot
+updateJson=https://github.com/MoonBirdLin/magisk-florida/latest/download/updater.json"""
 
     with open(path.joinpath("module.prop"), "w", newline="\n") as f:
         f.write(module_prop)
@@ -79,8 +79,10 @@ def fill_module(arch: str, frida_tag: str, project_tag: str):
     threading.current_thread().setName(arch)
     logger.info(f"Filling module for arch '{arch}'")
 
-    frida_download_url = f"https://github.com/frida/frida/releases/download/{frida_tag}/"
-    frida_server = f"frida-server-{frida_tag}-android-{arch}.xz"
+    frida_download_url = f"https://github.com/Ylarod/Florida/releases/download/{frida_tag}/"
+    # frida_download_url = f"https://github.com/frida/frida/releases/download/{frida_tag}/"
+    frida_server = f"florida-server-{frida_tag}-android-{arch}.gz"
+    # frida_server = f"frida-server-{frida_tag}-android-{arch}.xz"
     frida_server_path = PATH_DOWNLOADS.joinpath(frida_server)
 
     download_file(frida_download_url + frida_server, frida_server_path)
@@ -95,8 +97,10 @@ def create_updater_json(project_tag: str):
     updater ={
         "version": project_tag,
         "versionCode": int(project_tag.replace(".", "").replace("-", "")),
-        "zipUrl": f"https://github.com/ViRb3/magisk-frida/releases/download/{project_tag}/MagiskFrida-{project_tag}.zip",
-        "changelog": "https://raw.githubusercontent.com/ViRb3/magisk-frida/master/CHANGELOG.md"
+        # "zipUrl": f"https://github.com/ViRb3/magisk-frida/releases/download/{project_tag}/MagiskFrida-{project_tag}.zip",
+        "zipUrl": f"https://github.com/MoonBirdLin/magisk-florida/releases/download/{project_tag}/MagiskFrida-{project_tag}.zip",
+        # "changelog": "https://raw.githubusercontent.com/ViRb3/magisk-frida/master/CHANGELOG.md"
+        "changelog": "https://raw.githubusercontent.com/MoonBirdLin/magisk-florida/master/CHANGELOG.md"
     }
 
     with open(PATH_BUILD.joinpath("updater.json"), "w", newline="\n") as f:
@@ -124,7 +128,8 @@ def do_build(frida_tag: str, project_tag: str):
 
     create_module(project_tag)
 
-    archs = ["arm", "arm64", "x86", "x86_64"]
+    # archs = ["arm", "arm64", "x86", "x86_64"]
+    archs = ["arm", "arm64"]
     executor = concurrent.futures.ProcessPoolExecutor()
     futures = [executor.submit(fill_module, arch, frida_tag, project_tag)
                for arch in archs]

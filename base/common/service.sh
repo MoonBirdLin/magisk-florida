@@ -23,6 +23,6 @@ setprop sys.usap.enable false
 
 # restart on crash
 while true; do
-    frida-server
+    florida-server
     sleep 1
 done

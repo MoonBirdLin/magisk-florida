@@ -33,4 +33,4 @@ jobs:
         with:
           artifacts: build/*.zip,build/updater.json
           tag: "${{ env.NEW_TAG }}"
-          body: https://github.com/frida/frida/releases
+          body: https://github.com/Ylarod/Florida/releases
