@@ -124,7 +124,7 @@ REPLACE="
 print_modname() {
   ui_print " "
   ui_print "    ********************************************"
-  ui_print "    *               MagiskFrida                *"
+  ui_print "    *               MagiskFlorida              *"
   ui_print "    ********************************************"
   ui_print " "
 }
