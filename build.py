@@ -1,6 +1,7 @@
 #!/user/bin/env python3
 import logging
 import lzma
+import gzip
 import os
 from pathlib import Path
 import shutil
@@ -42,14 +43,20 @@ def download_file(url: str, path: Path):
 def extract_file(archive_path: Path, dest_path: Path):
     logger.info(f"Extracting '{archive_path.name}' to '{dest_path.name}'")
 
-    with lzma.open(archive_path) as f:
-        file_content = f.read()
-        path = dest_path.parent
+    # with lzma.open(archive_path) as f:
+    #     file_content = f.read()
+    #     path = dest_path.parent
 
-        path.mkdir(parents=True, exist_ok=True)
+    #     path.mkdir(parents=True, exist_ok=True)
 
-        with open(dest_path, "wb") as out:
-            out.write(file_content)
+    #     with open(dest_path, "wb") as out:
+    #         out.write(file_content)
+    gfile = gzip.GzipFile(archive_path, 'rb')
+    path = dest_path.parent
+    file_content = gfile.read()
+    path.mkdir(parents=True, exist_ok=True)
+    with open(dest_path, "wb") as out:
+        out.write(file_content)
 
 
 def create_module_prop(path: Path, project_tag: str):
@@ -88,7 +95,8 @@ def fill_module(arch: str, frida_tag: str, project_tag: str):
     download_file(frida_download_url + frida_server, frida_server_path)
     files_dir = PATH_BUILD_TMP.joinpath("files")
     files_dir.mkdir(exist_ok=True)
-    extract_file(frida_server_path, files_dir.joinpath(f"frida-server-{arch}"))
+    # extract_file(frida_server_path, files_dir.joinpath(f"frida-server-{arch}"))
+    extract_file(frida_server_path, files_dir.joinpath(f"florida-server-{arch}"))
 
 
 def create_updater_json(project_tag: str):
