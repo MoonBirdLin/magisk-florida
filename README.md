@@ -1,6 +1,6 @@
 # MagiskFlorida
 
-Forked from https://github.com/MoonBirdLin/magisk-florida, change frida to florida.
+Forked from https://github.com/MoonBirdLin/magisk-frida, change frida to florida.
 > [Florida](https://github.com/Ylarod/Florida): Basic anti-detection frida-server
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ViRb3/magisk-frida/main.yml?branch=master)
