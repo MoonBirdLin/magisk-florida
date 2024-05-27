@@ -16,6 +16,11 @@ done
 # ensure boot has actually completed
 sleep 5
 
+# set Needed Property for frida-server to ensure usap is disabled
+setenforce 0
+setprop persist.device_config.runtime_native.usap_pool_enabled false 
+setprop sys.usap.enable false
+
 # restart on crash
 while true; do
     frida-server
