@@ -22,6 +22,7 @@ jobs:
       - name: Build
         run: |
           pip3 install poetry==1.5.1
+          pip3 install gzip
           poetry config virtualenvs.create false
           poetry install
           python3 main.py
