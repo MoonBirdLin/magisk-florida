@@ -60,7 +60,7 @@ def extract_file(archive_path: Path, dest_path: Path):
 
 
 def create_module_prop(path: Path, project_tag: str):
-    module_prop = f"""id=magisk-frida
+    module_prop = f"""id=magisk-florida
 name=MagiskFlorida
 version={project_tag}
 versionCode={project_tag.replace(".", "").replace("-", "")}
