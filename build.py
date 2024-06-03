@@ -86,7 +86,8 @@ def fill_module(arch: str, frida_tag: str, project_tag: str):
     threading.current_thread().setName(arch)
     logger.info(f"Filling module for arch '{arch}'")
 
-    frida_download_url = f"https://github.com/Ylarod/Florida/releases/download/{frida_tag}/"
+    # frida_download_url = f"https://github.com/Ylarod/Florida/releases/download/{frida_tag}/"
+    frida_download_url = f"https://github.com/MoonBirdLin/Florida/releases/download/{frida_tag}/"
     # frida_download_url = f"https://github.com/frida/frida/releases/download/{frida_tag}/"
     frida_server = f"florida-server-{frida_tag}-android-{arch}.gz"
     # frida_server = f"frida-server-{frida_tag}-android-{arch}.xz"

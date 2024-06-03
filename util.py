@@ -20,7 +20,8 @@ def get_last_github_tag(project_name) -> str:
 # gets last tag of frida
 def get_last_frida_tag() -> str:
     # last_frida_tag = get_last_github_tag('frida/frida')
-    last_frida_tag = get_last_github_tag('Ylarod/Florida')
+    # last_frida_tag = get_last_github_tag('Ylarod/Florida')
+    last_frida_tag = get_last_github_tag('MoonBirdLin/Florida')
     print(f"Last frida tag: {last_frida_tag}")
     return last_frida_tag
 
