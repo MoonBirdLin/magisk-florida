@@ -2,7 +2,7 @@ name: CI
 
 on:
   schedule:
-    - cron: "0 9/12 * * *"
+    - cron: "0 12/15 * * *"
   push:
     branches: ["master"]
   workflow_dispatch:
