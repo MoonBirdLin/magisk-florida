@@ -18,7 +18,15 @@ sleep 5
 
 # set Needed Property for frida-server to ensure usap is disabled
 setenforce 0
+sleep 1
+pkill -f usap
+sleep 1
 setprop persist.device_config.runtime_native.usap_pool_enabled false 
+sleep 1
+pkill -f usap
+sleep 1
+setprop persist.device_config.runtime_native.usap_pool_enabled false 
+sleep 1
 setprop sys.usap.enable false
 
 # restart on crash
