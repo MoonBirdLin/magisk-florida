@@ -14,6 +14,9 @@ Forked from https://github.com/MoonBirdLin/magisk-frida, change frida to florida
 Solve isuue "Android crashes + reboots upon running frida-server" in OnePlus 9RT by setting properties `persist.device_config.runtime_native.usap_pool_enabled` and `sys.usap.enable`
 - [Android crashes + reboots upon running frida-server #1879](https://github.com/frida/frida/issues/1879)
 - [Can't spawn app on xiaomi pad 6 pro (Android13) due to usap #2719](https://github.com/frida/frida/issues/2719)
+- [Failed to spawn: unexpectedly timed out while waiting for signal from process](https://github.com/frida/frida/issues/2516)
+  - [May kill all usap process](https://github.com/frida/frida/issues/2516#issuecomment-1687449868)
+  - [stop usap prop before firda-server](https://github.com/frida/frida/issues/2516#issuecomment-1687463231)
 - Key idea is to disable all usap properties. If this module does not work on your devices, please add instructions before frida-server in base/common/service.sh (By the way, you can use `getprop | grep usap` to search all usap related properties).
 
 ## Supported architectures
