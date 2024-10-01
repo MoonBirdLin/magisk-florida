@@ -21,7 +21,7 @@ setenforce 0
 sleep 1
 pkill -f usap
 sleep 1
-resetprop persist.device_config.runtime_native.usap_pool_enabled false 
+resetprop -p persist.device_config.runtime_native.usap_pool_enabled false 
 sleep 1
 resetprop sys.usap.enable false
 sleep 5
